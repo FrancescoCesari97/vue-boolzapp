@@ -69,7 +69,7 @@
                             <p>ultimo messaggio inviato</p>
                         </div>
                         <div class="icons">
-                            
+                            {{contact.messages[contact.messages.length - 1].date}}
                         </div>
 
                     </div>
@@ -79,7 +79,7 @@
                 <div class="right-bar">
                     <div class="bar top-bar">
                         <div class="img-avatar">
-                            <img src="contact.avatar" alt="">
+                            <img src="./img/avatar_io.jpg" alt="">
                         </div>
                         <div class="name"> <p class="m-0">Sofia</p></div>
                         <div class="icons">
@@ -90,10 +90,10 @@
 
                     </div>
 
-                    <div class="main-chat" v-for="(contact, index) in contacts">
+                    <div class="main-chat" v-for="(status, index) in contacts.messages">
 
                         <div class="linea-messaggio inviato" >
-                            <div class="sent"  v-if="contacts.messages = 'sent'">
+                            <div class="sent"  v-if="contact.messages[contact.messages].status = 'sent'">
                                 
     
                             </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="linea-messaggio ricevuto">
                             
-                            <div class="recived" v-if="contacts.messages = 'received'">
+                            <div class="recived" v-if="contact.messages = 'received'">
                                
     
                             </div>

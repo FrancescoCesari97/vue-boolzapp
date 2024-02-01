@@ -168,11 +168,15 @@ const app = createApp({
           ],
         },
       ],
+
+      activeChat: 0,
     };
   },
 
   methods: {
-    clickChat(chatindex) {},
+    clickChat(index) {
+      this.activeChat = index;
+    },
   },
 });
 
