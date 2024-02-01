@@ -32,7 +32,7 @@
                         <div class="img-avatar">
                             <img src="./img/avatar_io.jpg" alt="">
                         </div>
-                        <div class="name"> <p class="m-0"></p></div>
+                        <div class="name"> <p class="m-0">Sofia</p></div>
                         <div class="icons">
                             <i class="fa-solid fa-circle-notch"></i>
                             <i class="fa-solid fa-message"></i>
@@ -60,7 +60,7 @@
                           
                     </div>
 
-                    <div class="bar bar-chat" v-for="(contact, index) in contacts" @click=" clickChat(index)">
+                    <div class="bar bar-chat" v-for="(contact, index) in contacts" @click="clickChat(index)">
                         <div class="img-avatar">
                             <img v-bind:src="contact.avatar" alt=>
                         </div>
@@ -79,7 +79,7 @@
                 <div class="right-bar">
                     <div class="bar top-bar">
                         <div class="img-avatar">
-                            <img src="./img/avatar_io.jpg" alt="">
+                            <img src="contact.avatar" alt="">
                         </div>
                         <div class="name"> <p class="m-0">Sofia</p></div>
                         <div class="icons">
@@ -94,7 +94,7 @@
 
                         <div class="linea-messaggio inviato" >
                             <div class="sent"  v-if="contacts.messages = 'sent'">
-                                prova
+                                
     
                             </div>
 

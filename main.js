@@ -172,9 +172,7 @@ const app = createApp({
   },
 
   methods: {
-    clickChat(chatindex) {
-      this.contacts = chatindex;
-    },
+    clickChat(chatindex) {},
   },
 });
 
