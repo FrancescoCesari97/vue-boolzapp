@@ -24,10 +24,116 @@
 <body>
     <div id="root">
         <div class="container text-center my-5">
-           <h1>{{greetings}}</h1>
+         
+            <div class="wrapper">
+
+                <div class="left-bar">
+                    <div class="bar top-bar" >
+                        <div class="img-avatar">
+                            <img src="./img/avatar_io.jpg" alt="">
+                        </div>
+                        <div class="name"> <p class="m-0"></p></div>
+                        <div class="icons">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="notif-bar bar">
+                        <div class="img-avatar">
+                            <i class="fa-solid fa-bell-slash bg-light p-3 rounded-circle"></i>
+                        </div>
+                        <div class="Descrizione"> 
+                            <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
+                            <a href="">attiva notifiche desktop</a>
+                        </div>
+
+                    </div>
+
+                    <div class="search-bar input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"> 
+                        
+                        
+                          
+                    </div>
+
+                    <div class="bar bar-chat" v-for="(contact, index) in contacts" @click=" clickChat(index)">
+                        <div class="img-avatar">
+                            <img v-bind:src="contact.avatar" alt=>
+                        </div>
+                        <div class="name"> 
+                            <p class="m-0">{{contact.name}}</p>
+                            <p>ultimo messaggio inviato</p>
+                        </div>
+                        <div class="icons">
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="right-bar">
+                    <div class="bar top-bar">
+                        <div class="img-avatar">
+                            <img src="./img/avatar_io.jpg" alt="">
+                        </div>
+                        <div class="name"> <p class="m-0">Sofia</p></div>
+                        <div class="icons">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="main-chat" v-for="(contact, index) in contacts">
+
+                        <div class="linea-messaggio inviato" >
+                            <div class="sent"  v-if="contacts.messages = 'sent'">
+                                prova
+    
+                            </div>
+
+                        </div>
+                        <div class="linea-messaggio ricevuto">
+                            
+                            <div class="recived" v-if="contacts.messages = 'received'">
+                               
+    
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="bottom-bar bar">
+                        <div class="icon">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+
+                        <div class="icon">
+                            <i class="fa-solid fa-microphone"></i>
+                            
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
             
 
-        <div id="profile-list" class="row ">
+        
 
 
         </div>
