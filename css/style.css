@@ -89,6 +89,10 @@ a{
 
 }
 
+.right img{
+    width: 50%;
+}
+
 .name{
     flex: 0 0 60%; 
     justify-content:start;
@@ -123,7 +127,11 @@ a{
 }
 
 .main-chat{
-    background-image: url('./img (5)/img/avatar_io.jpg');
+    background-image: url('./img/mine.jpg.jpg');
+   display: flex;
+   flex-direction: column;
+   
+   padding: 10px;
 }
 
 .bottom-bar{
@@ -137,28 +145,37 @@ a{
 
 .linea-messaggio{
     padding: 10px;
-    display: flex;
+   
     
 }
 
-.inviato{
-    justify-content: right;
-}
 
 
-.ricevuto{
-    justify-content: left;
-}
 
 .sent{
     background-color:#d5f9ba ;
     border-radius:8px;
-    flex: 0 0 20%;
+    
+    margin-left: auto;
+    max-width: 300px;
     
 }
 
-.recived{
+.received{
     background-color:#ffffff ;
     border-radius:8px;
-    flex: 0 0 20%;
+    
+    max-width: 300px;
+}
+
+
+.date {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.477);
+    text-align: end;
+}
+
+.messaggio{
+    font-size: 14px;
+    font-weight: 500;
 }

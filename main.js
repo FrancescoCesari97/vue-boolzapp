@@ -170,12 +170,51 @@ const app = createApp({
       ],
 
       activeChat: 0,
+
+      newMessage: {
+        dtae: "",
+        message: "",
+        status: "sent",
+      },
     };
+  },
+
+  computed: {
+    activeContact() {
+      return this.contacts[this.activeChat];
+    },
   },
 
   methods: {
     clickChat(index) {
       this.activeChat = index;
+    },
+
+    sendMessage() {
+      const nuovoMessaggio = { ...this.newMessage };
+
+      nuovoMessaggio.date = this.currentTime();
+
+      this.contacts[this.activeChat].messages.push(nuovoMessaggio);
+
+      this.newMessage.message = "";
+
+      setTimeout(this.automaticMessage, 1000);
+    },
+
+    currentTime() {
+      const now = new Date();
+      return `${now.getHours()}: ${now.getMinutes()}`;
+    },
+
+    automaticMessage() {
+      const messaggioAutomatico = {
+        status: "received",
+        message: "sto a keppà",
+        date: this.currentTime(),
+      };
+
+      this.contacts[this.activeChat].messages.push(messaggioAutomatico);
     },
   },
 });

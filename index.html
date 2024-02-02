@@ -68,7 +68,7 @@
                             <p class="m-0">{{contact.name}}</p>
                             <p>ultimo messaggio inviato</p>
                         </div>
-                        <div class="icons">
+                        <div class="icons date text-end">
                             {{contact.messages[contact.messages.length - 1].date}}
                         </div>
 
@@ -76,12 +76,12 @@
 
                 </div>
 
-                <div class="right-bar">
-                    <div class="bar top-bar">
-                        <div class="img-avatar">
-                            <img src="./img/avatar_io.jpg" alt="">
+                <div class="right-bar" >
+                    <div class="bar top-bar" >
+                        <div class="img-avatar right" >
+                            <img :src="contacts[activeChat].avatar" alt="">
                         </div>
-                        <div class="name"> <p class="m-0">Sofia</p></div>
+                        <div class="name"> <p class="m-0">{{contacts[activeChat].name}}</p></div>
                         <div class="icons">
                             <i class="fa-solid fa-circle-notch"></i>
                             <i class="fa-solid fa-message"></i>
@@ -90,23 +90,21 @@
 
                     </div>
 
-                    <div class="main-chat" v-for="(status, index) in contacts.messages">
+                    <div class="main-chat p-2" >
+                        
+                        <div class="linea-messaggio my-2"v-for="(item, index) in contacts[activeChat].messages" :class="item.status">
+                        
+                            <div>
+                                <p class="m-0 messaggio text-start"> {{item.message}}</p>
 
-                        <div class="linea-messaggio inviato" >
-                            <div class="sent"  v-if="contact.messages[contact.messages].status = 'sent'">
-                                
-    
                             </div>
+                            <div>
+                                <p class="m-0  date ">{{item.date}}</p>
 
-                        </div>
-                        <div class="linea-messaggio ricevuto">
-                            
-                            <div class="recived" v-if="contact.messages = 'received'">
-                               
-    
                             </div>
-
+    
                         </div>
+              
                         
                     </div>
 
@@ -115,8 +113,8 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
 
-                        <div class="input">
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                        <div class="input ">
+                            <input v-model="newMessage.message" @keyUp.enter="sendMessage()" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
                         </div>
 
                         <div class="icon">
