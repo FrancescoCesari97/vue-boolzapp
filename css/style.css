@@ -175,6 +175,13 @@ a{
     text-align: end;
 }
 
+.date-top-bar{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.477);
+    text-align: start;
+}
+
+
 .messaggio{
     font-size: 14px;
     font-weight: 500;

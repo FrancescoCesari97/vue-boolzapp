@@ -1,6 +1,7 @@
 //* STRUTTUTA BASE VUE
 
 const { createApp } = Vue;
+var DateTime = luxon.DateTime;
 
 const app = createApp({
   data() {
@@ -9,7 +10,7 @@ const app = createApp({
         {
           name: "Michele",
           avatar: "./img/avatar_1.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -31,7 +32,7 @@ const app = createApp({
         {
           name: "Fabio",
           avatar: "./img/avatar_2.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "20/03/2020 16:30:00",
@@ -53,7 +54,7 @@ const app = createApp({
         {
           name: "Samuele",
           avatar: "./img/avatar_3.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "28/03/2020 10:10:40",
@@ -75,7 +76,7 @@ const app = createApp({
         {
           name: "Alessandro B.",
           avatar: "./img/avatar_4.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -92,7 +93,7 @@ const app = createApp({
         {
           name: "Alessandro L.",
           avatar: "./img/avatar_5.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -109,7 +110,7 @@ const app = createApp({
         {
           name: "Claudia",
           avatar: "./img/avatar_6.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -131,7 +132,7 @@ const app = createApp({
         {
           name: "Federico",
           avatar: "./img/avatar_7.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -148,7 +149,7 @@ const app = createApp({
         {
           name: "Davide",
           avatar: "./img/avatar_8.jpg",
-          visible: false,
+          visible: true,
           messages: [
             {
               date: "10/01/2020 15:30:55",
@@ -171,8 +172,10 @@ const app = createApp({
 
       activeChat: 0,
 
+      contactFilter: "",
+
       newMessage: {
-        dtae: "",
+        date: this.currentTime(),
         message: "",
         status: "sent",
       },
@@ -191,20 +194,49 @@ const app = createApp({
     },
 
     sendMessage() {
+      // controllo se c'è del testo, se non c'è interrompo la funzione
+      if (!this.newMessage.message) return;
+
+      // copio staticamente l'oggetto nuovo messaggio
       const nuovoMessaggio = { ...this.newMessage };
 
+      // prendo il tempo corrente e lo aggiorno nel messaggio
       nuovoMessaggio.date = this.currentTime();
 
+      // aggiungo il messaggio alla conversazione con l'utente attivo
       this.contacts[this.activeChat].messages.push(nuovoMessaggio);
 
+      //resetto l'input
       this.newMessage.message = "";
 
+      // invio risposta automatica dopo 1 secondo
       setTimeout(this.automaticMessage, 1000);
     },
 
     currentTime() {
       const now = new Date();
-      return `${now.getHours()}: ${now.getMinutes()}`;
+
+      const day = now.getDate() < 10 ? "0" + now.getDate() : now.getDate();
+
+      const month =
+        now.getMonth() + 1 < 10
+          ? "0" + (now.getMonth() + 1)
+          : now.getMonth() + 1;
+
+      const years =
+        now.getFullYear() < 10 ? "0" + now.getFullYear() : now.getFullYear();
+
+      const hours = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+
+      const minutes =
+        now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+
+      const seconds =
+        now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();
+
+      console.log(`${day}/${month}/${years} ${hours}:${minutes}:${seconds}`);
+
+      return `${day}/${month}/${years} ${hours}:${minutes}:${seconds}`;
     },
 
     automaticMessage() {
@@ -215,6 +247,35 @@ const app = createApp({
       };
 
       this.contacts[this.activeChat].messages.push(messaggioAutomatico);
+    },
+
+    formatDate(date) {
+      const messageDate = DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss");
+
+      const messageDateText = messageDate.toLocaleString({
+        hour: "numeric",
+        minute: "numeric",
+        //timeZoneName: "short",
+      });
+
+      return messageDateText;
+    },
+
+    namesfilter() {
+      console.log(this.contactFilter);
+      this.contactFilter;
+
+      this.contacts = this.contacts.map((contact) => {
+        if (
+          contact.name.toLowerCase().includes(this.contactFilter.toLowerCase())
+        ) {
+          contact.visible = true;
+        } else {
+          contact.visible = false;
+        }
+
+        return contact;
+      });
     },
   },
 });
