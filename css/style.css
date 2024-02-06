@@ -128,10 +128,10 @@ a{
 }
 
 .main-chat{
-    background-image: url('./img/mine.jpg.jpg');
+    background-image: url('../img/mine.jpg');
    display: flex;
    flex-direction: column;
-   
+   height: 100%;
    padding: 10px;
 }
 
