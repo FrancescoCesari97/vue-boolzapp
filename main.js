@@ -263,7 +263,6 @@ const app = createApp({
 
     namesfilter() {
       console.log(this.contactFilter);
-      this.contactFilter;
 
       this.contacts = this.contacts.map((contact) => {
         if (
